@@ -5,6 +5,7 @@
       const hotelList = document.querySelector('.hotelList');
 
       const table = document.createElement('table');
+      table.border = '1';
       table.style.cssText = 'width: 100%';
 
       const headers = [
@@ -48,7 +49,7 @@
 
         if (key === 'image_url') {
           content.src = hotel.image_url.replace(/https?:/, '');
-          content.style.cssText = 'width: 20em';
+          content.style.cssText = 'width: 17em';
         } else if (key === 'amenities') {
           content.innerHTML = hotel.amenities.join('\n');
           content.style.cssText = 'white-space: pre-line';
