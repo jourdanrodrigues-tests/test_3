@@ -1,0 +1,22 @@
+{
+  "name": "snaptravel-test",
+  "version": "0.0.1",
+  "description": "This is our task for potential new fullstack engineers. We expect this task to take less than a few hours of work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/jourdanrodrigues/full-stack-demo.git"
+  },
+  "author": "Jourdan Rodrigues",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/jourdanrodrigues/full-stack-demo/issues"
+  },
+  "homepage": "https://gitlab.com/jourdanrodrigues/full-stack-demo#README",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
