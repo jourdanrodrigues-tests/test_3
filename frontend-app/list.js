@@ -40,6 +40,10 @@
         column.className = key;
         const content = document.createElement(defaultKeys[key]);
 
+        if (key === 'id') {
+          content.style.cssText = 'font-weight: bold';
+        }
+
         if (key === 'image_url') {
           content.src = hotel.image_url.replace(/https?:/, '');
           content.style.cssText = 'width: 20em';
