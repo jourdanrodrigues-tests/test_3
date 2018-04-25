@@ -33,9 +33,11 @@
 
     hotels.forEach(hotel => {
       const row = document.createElement('tr');
+      row.className = 'id_' + hotel.id;
 
       for (let key in defaultKeys) {
         const column = document.createElement('td');
+        column.className = key;
         const content = document.createElement(defaultKeys[key]);
 
         if (key === 'image_url') {
