@@ -3,6 +3,8 @@ const request = require('request-promise-native');
 const _snapTravelSource = 'snapTravel';
 const _hotelsDotComSource = 'hotelsDotCom';
 
+const redisClient = require('redis').createClient();
+
 module.exports = {
   getHotels: _getHotels,
   hotelsView: _hotelsView,
@@ -17,8 +19,16 @@ function _hotelsView(req, res) {
 
 
 function _getHotels(req, res) {
-  const data = req.query;
+  redisClient.get('hotels', (err, reply) => {
+    if (reply) {
+      res.send(JSON.parse(reply));
+    } else {
+      _fetchHotels(req.query, res);
+    }
+  });
+}
 
+function _fetchHotels(data, response) {
   const snapTravel = request(_getRequestOptions(data, 'snaptravel'));
   const hotelsDotCom = request(_getRequestOptions(data, 'retail'));
 
@@ -30,7 +40,9 @@ function _getHotels(req, res) {
       let hotels = labeledSnapData.concat(labeledHotelsDotCom);
       hotels = hotels.filter(_filterHotelsWrapper({}));
 
-      res.send(hotels);
+      redisClient.set('hotels', JSON.stringify(hotels));
+
+      response.send(hotels);
     });
 }
 
