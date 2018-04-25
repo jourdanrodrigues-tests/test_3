@@ -17,9 +17,10 @@
   },
   "homepage": "https://gitlab.com/jourdanrodrigues/full-stack-demo#README",
   "dependencies": {
+    "body-parser": "latest",
     "express": "^4.16.3",
+    "redis": "^2.8.0",
     "request": "^2.85.0",
-    "request-promise-native": "^1.0.5",
-    "body-parser": "latest"
+    "request-promise-native": "^1.0.5"
   }
 }
