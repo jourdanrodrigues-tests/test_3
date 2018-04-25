@@ -4,6 +4,9 @@
   "description": "This is our task for potential new fullstack engineers. We expect this task to take less than a few hours of work",
   "main": "index.js",
   "scripts": {
+    "redis": "redis-server --daemonize yes",
+    "start": "npm run redis && node index.js",
+    "dev": "npm run redis && ./node_modules/.bin/nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +25,8 @@
     "redis": "^2.8.0",
     "request": "^2.85.0",
     "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }
