@@ -5,6 +5,7 @@
       const hotelList = document.querySelector('.hotelList');
 
       const table = document.createElement('table');
+      table.style.cssText = 'width: 100%';
 
       const headers = [
         'Hotel id', 'Hotel Name', 'Number of views', 'Address', 'Number of stars',
@@ -38,6 +39,7 @@
       for (let key in defaultKeys) {
         const column = document.createElement('td');
         column.className = key;
+        column.style.cssText = 'text-align: center';
         const content = document.createElement(defaultKeys[key]);
 
         if (key === 'id') {
