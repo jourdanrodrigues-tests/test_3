@@ -39,7 +39,7 @@
         const content = document.createElement(defaultKeys[key]);
 
         if (key === 'image_url') {
-          content.src = hotel.image_url;
+          content.src = hotel.image_url.replace(/https?:/, '');
           content.style.cssText = 'width: 20em';
         } else if (key === 'amenities') {
           content.innerHTML = hotel.amenities.join('\n');
