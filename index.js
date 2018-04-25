@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
 const {getHotels, hotelsView} = require('./backend-app/retrieveData');
-const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
 app.use('/', express.static('frontend-app'));
 
 app.get('/api/hotels/', getHotels);
