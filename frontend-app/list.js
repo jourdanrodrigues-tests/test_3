@@ -45,6 +45,7 @@
           content.style.cssText = 'width: 20em';
         } else if (key === 'amenities') {
           content.innerHTML = hotel.amenities.join('\n');
+          content.style.cssText = 'white-space: pre-line';
         } else {
           content.innerHTML = hotel[key];
         }
