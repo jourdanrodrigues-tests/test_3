@@ -7,18 +7,22 @@
 </head>
 <body>
 
-<form>
+<form class="form" action="/search-hotels/" method="get">
   <label>
-    City: <input placeholder="Type the city">
+    City: <input placeholder="Type the city" name="city">
   </label>
   <label>
-    Check-in: <input placeholder="Type the check-in">
+    Check-in: <input placeholder="Type the check-in" name="checkin">
   </label>
   <label>
-    Check-out: <input placeholder="Type the check-out">
+    Check-out: <input placeholder="Type the check-out" name="checkout">
   </label>
-  <input type="submit" value="Search">
+  <button type="submit">Search</button>
 </form>
+
+<div class="result">
+
+</div>
 
 </body>
 </html>
