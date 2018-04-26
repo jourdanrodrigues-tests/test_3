@@ -19,11 +19,13 @@ function _hotelsView(req, res) {
 
 
 function _getHotels(req, res) {
-  redisClient.get('hotels', (err, reply) => {
+  const data = req.query;
+
+  redisClient.get(JSON.stringify(data), (err, reply) => {
     if (reply) {
       res.send(JSON.parse(reply));
     } else {
-      _fetchHotels(req.query, res);
+      _fetchHotels(data, res);
     }
   });
 }
@@ -40,7 +42,7 @@ function _fetchHotels(data, response) {
       let hotels = labeledSnapData.concat(labeledHotelsDotCom);
       hotels = hotels.filter(_filterHotelsWrapper({}));
 
-      redisClient.set('hotels', JSON.stringify(hotels));
+      redisClient.set(JSON.stringify(data), JSON.stringify(hotels));
 
       response.send(hotels);
     });
