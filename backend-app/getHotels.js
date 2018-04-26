@@ -1,9 +1,6 @@
 const request = require('request-promise-native');
 const redisClient = require('redis').createClient();
 
-const _snapTravelSource = 'snapTravel';
-const _hotelsDotComSource = 'hotelsDotCom';
-
 module.exports = function _getHotels(req, res) {
   const data = req.query;
 
@@ -22,8 +19,8 @@ function _fetchHotels(data, response) {
 
   Promise.all([snapTravel, hotelsDotCom])
     .then(([snapData, hotelsData]) => {
-      const labeledSnapData = _setSourcePrice(snapData['hotels'], _snapTravelSource);
-      const labeledHotelsDotCom = _setSourcePrice(hotelsData['hotels'], _hotelsDotComSource);
+      const labeledSnapData = _setSourcePrice(snapData['hotels'], 'snapTravel');
+      const labeledHotelsDotCom = _setSourcePrice(hotelsData['hotels'], 'hotelsDotCom');
 
       let hotels = labeledSnapData.concat(labeledHotelsDotCom);
       hotels = hotels.filter(_filterHotelsWrapper());
