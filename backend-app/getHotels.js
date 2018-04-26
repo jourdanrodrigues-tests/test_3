@@ -1,24 +1,10 @@
 const request = require('request-promise-native');
+const redisClient = require('redis').createClient();
 
 const _snapTravelSource = 'snapTravel';
 const _hotelsDotComSource = 'hotelsDotCom';
 
-const redisClient = require('redis').createClient();
-
-module.exports = {
-  getHotels: _getHotels,
-  hotelsView: _hotelsView,
-};
-
-function _hotelsView(req, res) {
-  const data = req.query;
-  const params = '?' + Object.keys(data).map(key => `${key}=${data[key]}`).join('&');
-
-  res.redirect('/list.html' + params);
-}
-
-
-function _getHotels(req, res) {
+module.exports = function _getHotels(req, res) {
   const data = req.query;
 
   redisClient.get(JSON.stringify(data), (err, reply) => {
@@ -28,7 +14,7 @@ function _getHotels(req, res) {
       _fetchHotels(data, res);
     }
   });
-}
+};
 
 function _fetchHotels(data, response) {
   const snapTravel = request(_getRequestOptions(data, 'snaptravel'));

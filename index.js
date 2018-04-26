@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {getHotels, hotelsView} = require('./backend-app/retrieveData');
+const {getHotels, hotelsView} = require('./backend-app/index');
 
 app.use('/', express.static('frontend-app'));
 
