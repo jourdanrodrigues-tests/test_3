@@ -7,7 +7,7 @@ const _hotelsDotComSource = 'hotelsDotCom';
 module.exports = function _getHotels(req, res) {
   const data = req.query;
 
-  redisClient.get(JSON.stringify(data), (err, reply) => {
+  redisClient.hget('hotels', JSON.stringify(data), (err, reply) => {
     if (reply) {
       res.send(JSON.parse(reply));
     } else {
@@ -28,7 +28,7 @@ function _fetchHotels(data, response) {
       let hotels = labeledSnapData.concat(labeledHotelsDotCom);
       hotels = hotels.filter(_filterHotelsWrapper());
 
-      redisClient.set(JSON.stringify(data), JSON.stringify(hotels));
+      redisClient.hset('hotels', JSON.stringify(data), JSON.stringify(hotels));
 
       response.send(hotels);
     });
