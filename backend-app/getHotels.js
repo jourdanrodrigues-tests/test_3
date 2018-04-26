@@ -26,7 +26,7 @@ function _fetchHotels(data, response) {
       const labeledHotelsDotCom = _setSourcePrice(hotelsData['hotels'], _hotelsDotComSource);
 
       let hotels = labeledSnapData.concat(labeledHotelsDotCom);
-      hotels = hotels.filter(_filterHotelsWrapper({}));
+      hotels = hotels.filter(_filterHotelsWrapper());
 
       redisClient.set(JSON.stringify(data), JSON.stringify(hotels));
 
@@ -34,7 +34,8 @@ function _fetchHotels(data, response) {
     });
 }
 
-function _filterHotelsWrapper(idPriceMap) {
+function _filterHotelsWrapper() {
+  const idPriceMap = {};
 
   return function _filterHotels(hotel) {
     if (hotel.id in idPriceMap) {
