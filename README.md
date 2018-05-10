@@ -71,5 +71,5 @@ For example, if the first call returned hotels with id [10,12] with SnapTravel p
 ![](https://i.imgur.com/fqT65hx.png)
 
 ## Notes
-* If you run into any technical difficulties contact henry@getsnaptravel.com
+* If you run into any technical difficulties contact email@test.com (obviously hidden)
 * If you wish to write tests you can but it is not a strict requirement.
